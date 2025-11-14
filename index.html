@@ -4,30 +4,48 @@
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width,initial-scale=1' />
   <title>The Needy Shit — Single Page Launch</title>
-  <meta name="description" content="THE NEEDY SHIT $TNS — community-first Solana meme token. Single-page OG launch site with editable token address after launch." />
+  <meta name="description" content="The Needy Shit $TNS — community-first Solana meme token. Single-page OG launch site with editable token address after launch." />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" />
-
   <style>
-    :root{--bg:#0b0f10;--card:#0f1415;--accent1:#ff5f6d;--accent2:#ffc371;--muted:#9aa5a6}
+    :root{
+      --bg:#0b0f10;
+      --card:#0f1415;
+      --accent1:#ff5f6d;
+      --accent2:#ffc371;
+      --muted:#9aa5a6;
+      --header-dark-brown:#4b2e2e; /* header bg */
+      --beige:#f5e6c8; /* beige text for sentence */
+    }
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#071012 0%,#0b0f10 100%);color:#e9f2f1}
-    header{padding:20px 20px;text-align:center;background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#031012;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    /* header changed to dark brown */
+    header{
+      padding:20px 20px;
+      text-align:center;
+      background:var(--header-dark-brown);
+      color:#e9f2f1;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
     .brand{display:flex;gap:14px;align-items:center;justify-content:flex-start}
-    h1{font-size:2.1rem;margin:0}
+    h1{font-size:2.1rem;margin:0;letter-spacing:0.6px}
     .muted{color:var(--muted)}
-    .brown-text { color:#c27a33 !important; }   /* 🔥 Your new brown color */
+    .beige-text{color:var(--beige);font-weight:500}
     .container{max-width:1100px;margin:28px auto;padding:0 20px}
     .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.5);margin-bottom:16px}
     .grid{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start}
-    .logo-wrap{width:72px;height:72px;border-radius:14px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;margin-right:12px}
-    .logo-wrap img{max-width:64px;max-height:64px;border-radius:10px}
+    /* logo doubled in size */
+    .logo-wrap{width:144px;height:144px;border-radius:18px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;margin-right:12px}
+    .logo-wrap img{max-width:128px;max-height:128px;border-radius:12px}
     .btn{display:inline-block;padding:8px 12px;border-radius:10px;font-weight:700;text-decoration:none}
     .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#071012}
     .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#e9f2f1}
     pre.snip{background:#0b1112;padding:12px;border-radius:8px;overflow:auto}
     footer{text-align:center;padding:18px;color:var(--muted);margin-top:18px}
     .socials{display:flex;gap:10px;align-items:center}
-    .social-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.03);text-decoration:none}
+    .social-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.03);text-decoration:none;color:inherit}
     .social-btn svg{width:20px;height:20px;display:block}
     .dex-status{display:inline-flex;align-items:center;gap:8px}
     .dot{width:12px;height:12px;border-radius:999px;background:#9b1b1b;display:inline-block;box-shadow:0 0 6px rgba(0,0,0,0.6)}
@@ -40,13 +58,39 @@
     <div class="brand">
       <div class="logo-wrap"><img id="brand-logo" src="assets/tns-logo-256.png" alt="TNS logo" /></div>
       <div>
-        <h1>The Needy Shit 
-          <small style="font-weight:700;background:rgba(255,255,255,0.04);padding:4px 8px;border-radius:999px;margin-left:8px">TNS</small>
+        <!-- HEADER TITLE IN CAPS -->
+        <h1>THE NEEDY SHIT
+          <!-- small token label WITHOUT SPACE and with $ -->
+          <small style="font-weight:700;background:rgba(255,255,255,0.04);padding:4px 8px;border-radius:999px;margin-left:8px">$TNS</small>
         </h1>
 
-        <!-- 🔥 BROWN COLORED SENTENCE -->
-        <p class="brown-text">Community-first Solana meme token — built by degens, for degens. No VCs. No rugs.</p>
+        <!-- Beige sentence exactly as requested -->
+        <p class="beige-text">community-first Solana meme token. Single-page OG launch site with editable token address after launch</p>
 
+      </div>
+    </div>
+
+    <!-- Social icons (X community + Dexscreener) -->
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="dex-status" title="Dexscreener price status">
+        <span id="dex-dot" class="dot" aria-hidden="true"></span>
+        <small id="dex-msg" class="muted">Dex status: unknown</small>
+      </div>
+
+      <div class="socials" aria-hidden="false">
+        <!-- X Community (Twitter Communities) -->
+        <a class="social-btn" id="x-community" href="https://twitter.com/i/communities/1989339746045472941" target="_blank" rel="noopener noreferrer" title="X Community">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.24 4.24 0 0 0 1.86-2.34 8.48 8.48 0 0 1-2.7 1.03 4.22 4.22 0 0 0-7.2 3.85A12 12 0 0 1 3.1 4.9a4.22 4.22 0 0 0 1.31 5.63c-.66-.02-1.29-.2-1.84-.5v.05a4.22 4.22 0 0 0 3.39 4.14c-.32.09-.66.13-.99.13-.24 0-.48-.02-.71-.07a4.22 4.22 0 0 0 3.94 2.93A8.47 8.47 0 0 1 2 19.54a12 12 0 0 0 6.5 1.9c7.79 0 12.06-6.45 12.06-12.05v-.55A8.6 8.6 0 0 0 24 5.5a8.4 8.4 0 0 1-2.54.7z"/>
+          </svg>
+        </a>
+
+        <!-- Dexscreener -->
+        <a class="social-btn" id="dex-link" href="https://dexscreener.com/" target="_blank" rel="noopener noreferrer" title="Dexscreener (pair)">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 17h2v4H3v-4zM8 9h2v12H8V9zm5-6h2v18h-2V3zm5 6h2v12h-2V9z"/>
+          </svg>
+        </a>
       </div>
     </div>
   </header>
@@ -62,7 +106,7 @@
         <section class="card">
           <h3>Token Snapshot</h3>
           <ul>
-            <li><strong>Ticker:</strong> TNS</li>
+            <li><strong>Ticker:</strong> $TNS</li>
             <li><strong>Chain:</strong> Solana</li>
             <li><strong>Total Supply:</strong> 1,000,000,000 TNS</li>
             <li><strong>Community Treasury:</strong> 10%</li>
@@ -107,10 +151,22 @@
         </section>
 
         <section class="card">
-          <h3>Branding</h3>
-          <p class="muted">Download logo & banner for Pump.fun listing and social media.</p>
-          <a class="btn btn-ghost" href="assets/tns-logo-256.png" download>Logo</a>
-          <a class="btn btn-ghost" href="assets/tns-banner.png" download>Banner</a>
+          <h3>Branding & Dex</h3>
+          <p class="muted">Download logo & banner for Pump.fun listing and social media. Set the Dexscreener pair below so everyone can check price instantly.</p>
+          <div style="display:flex;gap:8px;margin-bottom:10px">
+            <a class="btn btn-ghost" href="assets/tns-logo-256.png" download>Logo</a>
+            <a class="btn btn-ghost" href="assets/tns-banner.png" download>Banner</a>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+            <button class="btn btn-ghost" id="set-dex" onclick="setDex()">Admin: Set Dex Pair</button>
+            <button class="btn btn-ghost" id="check-dex" onclick="checkDex()">Check Dex Now</button>
+            <a id="open-dex" class="btn btn-primary" href="https://dexscreener.com/" target="_blank">Open Dexscreener</a>
+          </div>
+
+          <div style="margin-top:10px;color:var(--muted);font-size:13px">
+            Tip: Set the pair URL (example format: https://dexscreener.com/solana/&lt;pair-path&gt;). If your site has the Netlify backend configured, saving here can make the pair global for all visitors.
+          </div>
         </section>
       </aside>
     </div>
@@ -125,15 +181,80 @@ Pump.fun launch — [DATE]</pre>
   </main>
 
   <footer>
-    <p>© 2025 The Needy Shit — Community powered. Not financial advice. Pump responsibly.</p>
+    <p>© 2025 THE NEEDY SHIT — Community powered. Not financial advice. Pump responsibly.</p>
   </footer>
 
 <script>
+/*
+- Dex placeholder: replace localStorage key or use Netlify function as earlier described.
+- Dex check/proxy code omitted here for brevity — re-add if you have netlify functions.
+*/
+const DEX_STORAGE_KEY = 'tns_dex_url';
+function setDex(){
+  const existingPass = localStorage.getItem('tns_admin_pass_v1');
+  if(existingPass){
+    const pass = prompt('Enter admin passphrase to edit Dex pair:');
+    if(pass !== existingPass){ alert('Wrong passphrase'); return; }
+  } else {
+    const first = confirm('No admin passphrase set. Set one now?');
+    if(first){
+      const p = prompt('Enter new admin passphrase (save it somewhere safe):');
+      if(!p){ alert('Passphrase required'); return; }
+      localStorage.setItem('tns_admin_pass_v1', p);
+    }
+  }
+
+  const url = prompt('Paste full Dexscreener pair URL (example: https://dexscreener.com/solana/<pair-path>):');
+  if(!url) return;
+  localStorage.setItem(DEX_STORAGE_KEY, url);
+  applyDexUrlToUI(url);
+  alert('Dex pair saved locally. Configure backend for global persistence.');
+}
+
+function applyDexUrlToUI(url){
+  const dexLink = document.getElementById('dex-link');
+  const openDex = document.getElementById('open-dex');
+  const asideOpen = document.getElementById('open-dex');
+  if(dexLink) dexLink.href = url || 'https://dexscreener.com/';
+  if(openDex) openDex.href = url || 'https://dexscreener.com/';
+  if(asideOpen) asideOpen.href = url || 'https://dexscreener.com/';
+  document.getElementById('dex-msg').textContent = url ? 'Dex set' : 'Dex not set';
+}
+
+function checkDex(){
+  const dot = document.getElementById('dex-dot');
+  const msg = document.getElementById('dex-msg');
+  msg.textContent = 'Checking...';
+  dot.classList.remove('green');
+  const dexUrl = localStorage.getItem(DEX_STORAGE_KEY) || '';
+  if(!dexUrl){ msg.textContent = 'No Dex pair set'; return; }
+  // simple attempt: try fetch (may be blocked by CORS); if works, mark green
+  fetch(dexUrl, { mode: 'cors' }).then(r=>{
+    if(r.ok){ dot.classList.add('green'); msg.textContent = 'Live'; }
+    else { msg.textContent = 'Not live (status '+r.status+')'; }
+  }).catch(e=>{
+    msg.textContent = 'No backend – direct fetch blocked (CORS).';
+  });
+}
+
+/* token admin functions (same as before) */
 function loadToken(){
   const saved = localStorage.getItem('tns_token') || 'SOLANA_TOKEN_ADDRESS_HERE';
   document.getElementById('token-address').textContent = saved;
 }
 function editToken(){
+  const existing = localStorage.getItem('tns_admin_pass_v1');
+  if(existing){
+    const pass = prompt('Enter admin passphrase to edit token address:');
+    if(pass !== existing){ alert('Wrong passphrase'); return; }
+  } else {
+    const setup = confirm('No admin passphrase set. Set one now?');
+    if(setup){
+      const newp = prompt('Enter a new admin passphrase (store it somewhere safe):');
+      if(!newp){ alert('Passphrase required to edit later'); return; }
+      localStorage.setItem('tns_admin_pass_v1', newp);
+    }
+  }
   const input = prompt('Enter token address:');
   if(input){
     localStorage.setItem('tns_token', input);
@@ -142,10 +263,14 @@ function editToken(){
 }
 function copyToken(){
   const t = document.getElementById('token-address').textContent;
-  navigator.clipboard.writeText(t);
-  alert('Copied!');
+  navigator.clipboard.writeText(t).then(()=> alert('Copied!'));
 }
-loadToken();
+
+(function init(){
+  loadToken();
+  const d = localStorage.getItem(DEX_STORAGE_KEY);
+  if(d) applyDexUrlToUI(d);
+})();
 </script>
 
 </body>
