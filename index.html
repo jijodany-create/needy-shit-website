@@ -4,7 +4,7 @@
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width,initial-scale=1' />
   <title>The Needy Shit — Single Page Launch</title>
-  <meta name="description" content="The Needy Shit $TNS — community-first Solana meme token. Single-page OG launch site with editable token address after launch." />
+  <meta name="description" content="The Needy Shit $TNS — FOR ALL YOUR NEEDY DESIRES, FORGE YOUR PATH" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" />
   <style>
     :root{
@@ -32,7 +32,7 @@
     .brand{display:flex;gap:14px;align-items:center;justify-content:flex-start}
     h1{font-size:2.1rem;margin:0;letter-spacing:0.6px}
     .muted{color:var(--muted)}
-    .beige-text{color:var(--beige);font-weight:500}
+    .beige-text{color:var(--beige);font-weight:600}
     .container{max-width:1100px;margin:28px auto;padding:0 20px}
     .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.5);margin-bottom:16px}
     .grid{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start}
@@ -48,8 +48,8 @@
     .social-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.03);text-decoration:none;color:inherit}
     .social-btn svg{width:20px;height:20px;display:block}
     .dex-status{display:inline-flex;align-items:center;gap:8px}
-    .dot{width:12px;height:12px;border-radius:999px;background:#9b1b1b;display:inline-block;box-shadow:0 0 6px rgba(0,0,0,0.6)}
-    .dot.green{background:#18a558}
+    .dot{display:none} /* removed visual dot as requested */
+    .left-align{ text-align:left; }
     @media(max-width:900px){.grid{grid-template-columns:1fr}.brand{flex-direction:column;align-items:center}header{flex-direction:column;gap:8px}}
   </style>
 </head>
@@ -64,19 +64,14 @@
           <small style="font-weight:700;background:rgba(255,255,255,0.04);padding:4px 8px;border-radius:999px;margin-left:8px">$TNS</small>
         </h1>
 
-        <!-- Beige sentence exactly as requested -->
-        <p class="beige-text">community-first Solana meme token. Single-page OG launch site with editable token address after launch</p>
+        <!-- Beige sentence replaced as requested -->
+        <p class="beige-text">FOR ALL YOUR NEEDY  DESIRES, FORGE YOUR PATH</p>
 
       </div>
     </div>
 
     <!-- Social icons (X community + Dexscreener) -->
     <div style="display:flex;align-items:center;gap:12px">
-      <div class="dex-status" title="Dexscreener price status">
-        <span id="dex-dot" class="dot" aria-hidden="true"></span>
-        <small id="dex-msg" class="muted">Dex status: unknown</small>
-      </div>
-
       <div class="socials" aria-hidden="false">
         <!-- X Community (Twitter Communities) -->
         <a class="social-btn" id="x-community" href="https://twitter.com/i/communities/1989339746045472941" target="_blank" rel="noopener noreferrer" title="X Community">
@@ -103,8 +98,10 @@
 
     <div class="grid">
       <div>
-        <section class="card">
+        <section class="card left-align">
           <h3>Token Snapshot</h3>
+          <!-- Left-aligned tagline added inside Token Snapshot -->
+          <p class="beige-text left-align">FOR ALL YOUR NEEDY  DESIRES, FORGE YOUR PATH</p>
           <ul>
             <li><strong>Ticker:</strong> $TNS</li>
             <li><strong>Chain:</strong> Solana</li>
@@ -115,8 +112,10 @@
           </ul>
         </section>
 
-        <section class="card">
+        <section class="card left-align">
           <h3>How to Buy</h3>
+          <!-- Left-aligned tagline added inside How to Buy -->
+          <p class="beige-text left-align">FOR ALL YOUR NEEDY  DESIRES, FORGE YOUR PATH</p>
           <ol class="muted">
             <li>Install a Solana wallet (Phantom / Solflare / Backpack).</li>
             <li>Fund the wallet with SOL (0.05–0.5 SOL recommended).</li>
@@ -185,11 +184,9 @@ Pump.fun launch — [DATE]</pre>
   </footer>
 
 <script>
-/*
-- Dex placeholder: replace localStorage key or use Netlify function as earlier described.
-- Dex check/proxy code omitted here for brevity — re-add if you have netlify functions.
-*/
+/* Final JS updated to reflect removed dot; Dex handling remains local-only unless you add backend functions */
 const DEX_STORAGE_KEY = 'tns_dex_url';
+
 function setDex(){
   const existingPass = localStorage.getItem('tns_admin_pass_v1');
   if(existingPass){
@@ -218,29 +215,35 @@ function applyDexUrlToUI(url){
   if(dexLink) dexLink.href = url || 'https://dexscreener.com/';
   if(openDex) openDex.href = url || 'https://dexscreener.com/';
   if(asideOpen) asideOpen.href = url || 'https://dexscreener.com/';
-  document.getElementById('dex-msg').textContent = url ? 'Dex set' : 'Dex not set';
+  // no dot present; update labels if needed
 }
 
 function checkDex(){
-  const dot = document.getElementById('dex-dot');
-  const msg = document.getElementById('dex-msg');
-  msg.textContent = 'Checking...';
-  dot.classList.remove('green');
+  const msgEl = document.getElementById('dex-msg');
+  if(msgEl) msgEl.textContent = 'Checking...';
   const dexUrl = localStorage.getItem(DEX_STORAGE_KEY) || '';
-  if(!dexUrl){ msg.textContent = 'No Dex pair set'; return; }
-  // simple attempt: try fetch (may be blocked by CORS); if works, mark green
+  if(!dexUrl){
+    if(msgEl) msgEl.textContent = 'No Dex pair set';
+    alert('No Dex pair set. Use Admin: Set Dex Pair to add the Dexscreener URL.');
+    return;
+  }
+  // quick try: attempt fetch (may be blocked by CORS)
   fetch(dexUrl, { mode: 'cors' }).then(r=>{
-    if(r.ok){ dot.classList.add('green'); msg.textContent = 'Live'; }
-    else { msg.textContent = 'Not live (status '+r.status+')'; }
+    if(r.ok){
+      alert('Dexscreener page reachable (direct fetch).');
+    } else {
+      alert('Dexscreener returned status ' + r.status + '. If blocked, consider adding the Netlify proxy function for reliable checks.');
+    }
   }).catch(e=>{
-    msg.textContent = 'No backend – direct fetch blocked (CORS).';
+    alert('Direct fetch blocked or failed (CORS). Consider adding the Netlify proxy function for reliable checks.');
   });
 }
 
 /* token admin functions (same as before) */
 function loadToken(){
   const saved = localStorage.getItem('tns_token') || 'SOLANA_TOKEN_ADDRESS_HERE';
-  document.getElementById('token-address').textContent = saved;
+  const el = document.getElementById('token-address');
+  if(el) el.textContent = saved;
 }
 function editToken(){
   const existing = localStorage.getItem('tns_admin_pass_v1');
