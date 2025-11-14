@@ -13,12 +13,11 @@
       --accent1:#ff5f6d;
       --accent2:#ffc371;
       --muted:#9aa5a6;
-      --header-dark-brown:#4b2e2e; /* header bg */
-      --beige:#f5e6c8; /* beige text for sentence */
+      --header-dark-brown:#4b2e2e;
+      --beige:#f5e6c8;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#071012 0%,#0b0f10 100%);color:#e9f2f1}
-    /* header changed to dark brown */
     header{
       padding:20px 20px;
       text-align:center;
@@ -36,7 +35,6 @@
     .container{max-width:1100px;margin:28px auto;padding:0 20px}
     .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 30px rgba(0,0,0,0.5);margin-bottom:16px}
     .grid{display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start}
-    /* logo doubled in size */
     .logo-wrap{width:144px;height:144px;border-radius:18px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;margin-right:12px}
     .logo-wrap img{max-width:128px;max-height:128px;border-radius:12px}
     .btn{display:inline-block;padding:8px 12px;border-radius:10px;font-weight:700;text-decoration:none}
@@ -47,50 +45,45 @@
     .socials{display:flex;gap:10px;align-items:center}
     .social-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.03);text-decoration:none;color:inherit}
     .social-btn svg{width:20px;height:20px;display:block}
-    .dex-status{display:inline-flex;align-items:center;gap:8px}
-    .dot{display:none} /* removed visual dot as requested */
-    .left-align{ text-align:left; }
-    @media(max-width:900px){.grid{grid-template-columns:1fr}.brand{flex-direction:column;align-items:center}header{flex-direction:column;gap:8px}}
+    .left-align{text-align:left;}
+    .dot{display:none}
+    @media(max-width:900px){
+      .grid{grid-template-columns:1fr}
+      .brand{flex-direction:column;align-items:center}
+      header{flex-direction:column;gap:8px}
+    }
   </style>
 </head>
+
 <body>
   <header class="animate__animated animate__fadeInDown">
     <div class="brand">
       <div class="logo-wrap"><img id="brand-logo" src="assets/tns-logo-256.png" alt="TNS logo" /></div>
+
       <div>
-        <!-- HEADER TITLE IN CAPS -->
         <h1>THE NEEDY SHIT
-          <!-- small token label WITHOUT SPACE and with $ -->
           <small style="font-weight:700;background:rgba(255,255,255,0.04);padding:4px 8px;border-radius:999px;margin-left:8px">$TNS</small>
         </h1>
 
-        <!-- Beige sentence replaced as requested -->
-        <p class="beige-text">FOR ALL YOUR NEEDY  DESIRES, FORGE YOUR PATH</p>
-
+        <p class="beige-text">FOR ALL YOUR NEEDY DESIRES, FORGE YOUR PATH</p>
       </div>
     </div>
 
-    <!-- Social icons (X community + Dexscreener) -->
     <div style="display:flex;align-items:center;gap:12px">
-      <div class="socials" aria-hidden="false">
-        <!-- X Community (Twitter Communities) -->
-        <a class="social-btn" id="x-community" href="https://twitter.com/i/communities/1989339746045472941" target="_blank" rel="noopener noreferrer" title="X Community">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.24 4.24 0 0 0 1.86-2.34 8.48 8.48 0 0 1-2.7 1.03 4.22 4.22 0 0 0-7.2 3.85A12 12 0 0 1 3.1 4.9a4.22 4.22 0 0 0 1.31 5.63c-.66-.02-1.29-.2-1.84-.5v.05a4.22 4.22 0 0 0 3.39 4.14c-.32.09-.66.13-.99.13-.24 0-.48-.02-.71-.07a4.22 4.22 0 0 0 3.94 2.93A8.47 8.47 0 0 1 2 19.54a12 12 0 0 0 6.5 1.9c7.79 0 12.06-6.45 12.06-12.05v-.55A8.6 8.6 0 0 0 24 5.5a8.4 8.4 0 0 1-2.54.7z"/>
-          </svg>
+      <div class="socials">
+        <a class="social-btn" href="https://twitter.com/i/communities/1989339746045472941" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.24 4.24 0 0 0 1.86-2.34 8.48 8.48 0 0 1-2.7 1.03 4.22 4.22 0 0 0-7.2 3.85A12 12 0 0 1 3.1 4.9a4.22 4.22 0 0 0 1.31 5.63c-.66-.02-1.29-.2-1.84-.5v.05a4.22 4.22 0 0 0 3.39 4.14c-.32.09-.66.13-.99.13-.24 0-.48-.02-.71-.07a4.22 4.22 0 0 0 3.94 2.93A8.47 8.47 0 0 1 2 19.54a12 12 0 0 0 6.5 1.9c7.79 0 12.06-6.45 12.06-12.05v-.55A8.6 8.6 0 0 0 24 5.5a8.4 8.4 0 0 1-2.54.7z"/></svg>
         </a>
 
-        <!-- Dexscreener -->
-        <a class="social-btn" id="dex-link" href="https://dexscreener.com/" target="_blank" rel="noopener noreferrer" title="Dexscreener (pair)">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M3 17h2v4H3v-4zM8 9h2v12H8V9zm5-6h2v18h-2V3zm5 6h2v12h-2V9z"/>
-          </svg>
+        <a class="social-btn" id="dex-link" href="https://dexscreener.com/" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17h2v4H3v-4zM8 9h2v12H8V9zm5-6h2v18h-2V3zm5 6h2v12h-2V9z"/></svg>
         </a>
       </div>
     </div>
   </header>
 
   <main class="container">
+
     <section class="card">
       <h2>Viral Degen Pitch</h2>
       <p class="muted">$TNS is the meme coin for every broke degen who has ever shouted "maybe this one pumps." For newcomers, veterans, and everyone sick of rug pulls. Built by community hustle, meme power, and real transparency.</p>
@@ -98,10 +91,10 @@
 
     <div class="grid">
       <div>
+
+        <!-- CLEAN TOKEN SNAPSHOT (tagline removed) -->
         <section class="card left-align">
           <h3>Token Snapshot</h3>
-          <!-- Left-aligned tagline added inside Token Snapshot -->
-          <p class="beige-text left-align">FOR ALL YOUR NEEDY  DESIRES, FORGE YOUR PATH</p>
           <ul>
             <li><strong>Ticker:</strong> $TNS</li>
             <li><strong>Chain:</strong> Solana</li>
@@ -112,10 +105,9 @@
           </ul>
         </section>
 
+        <!-- CLEAN HOW-TO-BUY (tagline removed) -->
         <section class="card left-align">
           <h3>How to Buy</h3>
-          <!-- Left-aligned tagline added inside How to Buy -->
-          <p class="beige-text left-align">FOR ALL YOUR NEEDY  DESIRES, FORGE YOUR PATH</p>
           <ol class="muted">
             <li>Install a Solana wallet (Phantom / Solflare / Backpack).</li>
             <li>Fund the wallet with SOL (0.05–0.5 SOL recommended).</li>
@@ -134,44 +126,41 @@
           <h3>Degen Manifesto</h3>
           <p class="muted">We refuse VC control and shady whales. We fight for community wins. Pump responsibly and meme loudly.</p>
         </section>
+
       </div>
 
       <aside>
         <section class="card">
           <h3>Live & Editable Token Address</h3>
-          <p><strong>Current token address:</strong></p>
           <pre id="token-address" class="snip">SOLANA_TOKEN_ADDRESS_HERE</pre>
-
           <div style="margin-top:12px">
-            <button class="btn btn-ghost" onclick="editToken()">Admin: Edit Token Address</button>
-            <button class="btn btn-ghost" onclick="copyToken()">Copy Address</button>
+            <button class="btn btn-ghost" onclick="editToken()">Admin: Edit Token</button>
+            <button class="btn btn-ghost" onclick="copyToken()">Copy</button>
             <a class="btn btn-primary" href="https://pump.fun" target="_blank">Go to Pump.fun</a>
           </div>
         </section>
 
         <section class="card">
           <h3>Branding & Dex</h3>
-          <p class="muted">Download logo & banner for Pump.fun listing and social media. Set the Dexscreener pair below so everyone can check price instantly.</p>
+          <p class="muted">Download logo & banner for Pump.fun listing and social media.</p>
+
           <div style="display:flex;gap:8px;margin-bottom:10px">
             <a class="btn btn-ghost" href="assets/tns-logo-256.png" download>Logo</a>
             <a class="btn btn-ghost" href="assets/tns-banner.png" download>Banner</a>
           </div>
 
           <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
-            <button class="btn btn-ghost" id="set-dex" onclick="setDex()">Admin: Set Dex Pair</button>
-            <button class="btn btn-ghost" id="check-dex" onclick="checkDex()">Check Dex Now</button>
-            <a id="open-dex" class="btn btn-primary" href="https://dexscreener.com/" target="_blank">Open Dexscreener</a>
+            <button class="btn btn-ghost" onclick="setDex()">Admin: Set Dex</button>
+            <button class="btn btn-ghost" onclick="checkDex()">Check Dex</button>
+            <a id="open-dex" class="btn btn-primary" href="https://dexscreener.com/" target="_blank">Open Dex</a>
           </div>
 
-          <div style="margin-top:10px;color:var(--muted);font-size:13px">
-            Tip: Set the pair URL (example format: https://dexscreener.com/solana/&lt;pair-path&gt;). If your site has the Netlify backend configured, saving here can make the pair global for all visitors.
-          </div>
         </section>
       </aside>
     </div>
 
     <section class="card">
-      <h3>Launch Copy (Twitter & Pump.fun)</h3>
+      <h3>Launch Copy</h3>
       <pre class="snip">🚀 THE NEEDY SHIT $TNS — born for degens, built by degens.
 No VCs. No rugs. Community chaos only.
 Pump.fun launch — [DATE]</pre>
@@ -180,99 +169,52 @@ Pump.fun launch — [DATE]</pre>
   </main>
 
   <footer>
-    <p>© 2025 THE NEEDY SHIT — Community powered. Not financial advice. Pump responsibly.</p>
+    <p>© 2025 THE NEEDY SHIT — Community powered.</p>
   </footer>
 
 <script>
-/* Final JS updated to reflect removed dot; Dex handling remains local-only unless you add backend functions */
 const DEX_STORAGE_KEY = 'tns_dex_url';
 
 function setDex(){
-  const existingPass = localStorage.getItem('tns_admin_pass_v1');
-  if(existingPass){
-    const pass = prompt('Enter admin passphrase to edit Dex pair:');
-    if(pass !== existingPass){ alert('Wrong passphrase'); return; }
-  } else {
-    const first = confirm('No admin passphrase set. Set one now?');
-    if(first){
-      const p = prompt('Enter new admin passphrase (save it somewhere safe):');
-      if(!p){ alert('Passphrase required'); return; }
-      localStorage.setItem('tns_admin_pass_v1', p);
-    }
-  }
-
-  const url = prompt('Paste full Dexscreener pair URL (example: https://dexscreener.com/solana/<pair-path>):');
-  if(!url) return;
-  localStorage.setItem(DEX_STORAGE_KEY, url);
-  applyDexUrlToUI(url);
-  alert('Dex pair saved locally. Configure backend for global persistence.');
+  const p = prompt("Paste Dexscreener pair URL:");
+  if(!p) return;
+  localStorage.setItem(DEX_STORAGE_KEY, p);
+  applyDex(p);
+  alert("Dex saved.");
 }
 
-function applyDexUrlToUI(url){
-  const dexLink = document.getElementById('dex-link');
-  const openDex = document.getElementById('open-dex');
-  const asideOpen = document.getElementById('open-dex');
-  if(dexLink) dexLink.href = url || 'https://dexscreener.com/';
-  if(openDex) openDex.href = url || 'https://dexscreener.com/';
-  if(asideOpen) asideOpen.href = url || 'https://dexscreener.com/';
-  // no dot present; update labels if needed
+function applyDex(url){
+  document.getElementById('dex-link').href = url;
+  document.getElementById('open-dex').href = url;
 }
 
 function checkDex(){
-  const msgEl = document.getElementById('dex-msg');
-  if(msgEl) msgEl.textContent = 'Checking...';
-  const dexUrl = localStorage.getItem(DEX_STORAGE_KEY) || '';
-  if(!dexUrl){
-    if(msgEl) msgEl.textContent = 'No Dex pair set';
-    alert('No Dex pair set. Use Admin: Set Dex Pair to add the Dexscreener URL.');
-    return;
-  }
-  // quick try: attempt fetch (may be blocked by CORS)
-  fetch(dexUrl, { mode: 'cors' }).then(r=>{
-    if(r.ok){
-      alert('Dexscreener page reachable (direct fetch).');
-    } else {
-      alert('Dexscreener returned status ' + r.status + '. If blocked, consider adding the Netlify proxy function for reliable checks.');
-    }
-  }).catch(e=>{
-    alert('Direct fetch blocked or failed (CORS). Consider adding the Netlify proxy function for reliable checks.');
-  });
+  const u = localStorage.getItem(DEX_STORAGE_KEY);
+  if(!u) return alert("No Dex URL set.");
+  fetch(u).then(()=>alert("Dex reachable")).catch(()=>alert("Dex fetch blocked (CORS)."));
 }
 
-/* token admin functions (same as before) */
 function loadToken(){
-  const saved = localStorage.getItem('tns_token') || 'SOLANA_TOKEN_ADDRESS_HERE';
-  const el = document.getElementById('token-address');
-  if(el) el.textContent = saved;
+  document.getElementById('token-address').textContent =
+    localStorage.getItem('tns_token') || "SOLANA_TOKEN_ADDRESS_HERE";
 }
+
 function editToken(){
-  const existing = localStorage.getItem('tns_admin_pass_v1');
-  if(existing){
-    const pass = prompt('Enter admin passphrase to edit token address:');
-    if(pass !== existing){ alert('Wrong passphrase'); return; }
-  } else {
-    const setup = confirm('No admin passphrase set. Set one now?');
-    if(setup){
-      const newp = prompt('Enter a new admin passphrase (store it somewhere safe):');
-      if(!newp){ alert('Passphrase required to edit later'); return; }
-      localStorage.setItem('tns_admin_pass_v1', newp);
-    }
-  }
-  const input = prompt('Enter token address:');
-  if(input){
-    localStorage.setItem('tns_token', input);
-    loadToken();
-  }
+  const t = prompt("Enter token address:");
+  if(!t) return;
+  localStorage.setItem('tns_token', t);
+  loadToken();
 }
+
 function copyToken(){
-  const t = document.getElementById('token-address').textContent;
-  navigator.clipboard.writeText(t).then(()=> alert('Copied!'));
+  navigator.clipboard.writeText(document.getElementById('token-address').textContent)
+    .then(()=>alert("Copied!"));
 }
 
 (function init(){
   loadToken();
-  const d = localStorage.getItem(DEX_STORAGE_KEY);
-  if(d) applyDexUrlToUI(d);
+  const dex = localStorage.getItem(DEX_STORAGE_KEY);
+  if(dex) applyDex(dex);
 })();
 </script>
 
